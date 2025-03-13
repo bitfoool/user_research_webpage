@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI & Parenting - Understanding Real Challenges</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    :root {
+      --primary-color: #FF6B6B;
+      --secondary-color: #FF9F43;
+      --accent-color: #FFC107;
+      --text-color: #3D2C2E;
+      --light-bg: #FFF5E1;
+      --white: #ffffff;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Nunito', sans-serif;
+      line-height: 1.5;
+      color: var(--text-color);
+      background-color: var(--light-bg);
+      position: relative;
+      overflow-x: hidden;
+    }
+    
+    /* Background Shapes */
+    .shape {
+      position: absolute;
+      z-index: -1;
+      opacity: 0.3;
+    }
+    
+    .shape-1 {
+      top: 10%;
+      left: 5%;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: var(--primary-color);
+    }
+    
+    .shape-2 {
+      bottom: 15%;
+      right: 5%;
+      width: 150px;
+      height: 150px;
+      background-color: var(--secondary-color);
+      transform: rotate(45deg);
+    }
+    
+    .shape-3 {
+      top: 50%;
+      left: 10%;
+      width: 80px;
+      height: 80px;
+      background-color: var(--accent-color);
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    }
+    
+    .container {
+      width: 92%;
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px 0;
+    }
+    
+    h1, h2, h3 {
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 600;
+    }
+    
+    .btn {
+      display: inline-block;
+      background-color: var(--secondary-color);
+      color: var(--white);
+      padding: 10px 24px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+      font-size: 16px;
+    }
+    
+    .btn:hover {
+      background-color: var(--accent-color);
+    }
+    
+    /* Button group for multiple CTAs */
+    .button-group {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    
+    /* Hero Section (Header) */
+    .hero {
+      position: relative;
+      background: url('https://images.unsplash.com/photo-1536640712-4d4c36ff0e4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') center/cover;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      padding: 40px 0;
+      border-radius: 0 0 30px 30px;
+    }
+    
+    /* Added overlay for header */
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 0 0 30px 30px;
+      z-index: 0;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.85);
+      padding: 30px;
+      border-radius: 20px;
+    }
+    
+    .hero h1 {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+    }
+    
+    /* Grid Section */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    
+    .grid-item {
+      background: var(--white);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      transition: 0.3s;
+      text-align: center;
+    }
+    
+    .grid-item:hover {
+      transform: translateY(-5px);
+    }
+    
+    .grid-item i {
+      font-size: 2rem;
+      color: var(--secondary-color);
+      margin-bottom: 10px;
+    }
+    
+    /* Team Section */
+    .team-section {
+      margin-top: 40px;
+      text-align: center;
+      padding: 40px 0;
+    }
+    
+    .team-section h2 {
+      margin-bottom: 30px;
+    }
+    
+    .team-members {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+    
+    .team-member {
+      background: var(--white);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      transition: 0.3s;
+    }
+    
+    .team-member:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .team-member h3 {
+      color: var(--primary-color);
+      margin-bottom: 8px;
+    }
+    
+    .team-member p {
+      font-size: 14px;
+      color: var(--text-color);
+      opacity: 0.8;
+    }
+    
+    /* Team images */
+    .team-member img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    /* CTA Section */
+    .cta {
+      text-align: center;
+      padding: 60px 20px;
+      background-color: var(--primary-color);
+      color: var(--white);
+      border-radius: 20px;
+      margin-top: 40px;
+    }
+    
+    /* FAQ Accordion Section */
+    .faq-section {
+      margin: 40px auto;
+      padding: 40px 20px;
+      background-color: var(--white);
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      max-width: 800px;
+    }
+    
+    .faq-section h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .faq-section details {
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin: 0 auto 15px;
+      padding: 15px;
+      transition: background-color 0.3s ease;
+      max-width: 700px;
+    }
+    
+    .faq-section details[open] {
+      background-color: #f9f9f9;
+    }
+    
+    .faq-section summary {
+      font-weight: bold;
+      cursor: pointer;
+      outline: none;
+    }
+    
+    .faq-section summary::-webkit-details-marker {
+      display: none;
+    }
+    
+    .faq-section p {
+      padding: 10px 0 0 0;
+      margin: 0;
+    }
+    
+    /* Footer Section */
+    footer {
+      background-color: var(--secondary-color);
+      color: var(--white);
+      text-align: center;
+      padding: 20px 0;
+      font-size: 14px;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .hero {
+        min-height: 60vh;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .btn {
+        padding: 10px 18px;
+      }
+      .team-members {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Shapes -->
+  <div class="shape shape-1"></div>
+  <div class="shape shape-2"></div>
+  <div class="shape shape-3"></div>
+  
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Making Parenting Fun with AI</h1>
+        <p>
+          We’re a team of five exploring how AI can make parenting smoother. We want to talk to parents to better understand the small, everyday challenges—from organizing schedules to managing the moving pieces of family life.
+          <br /><br />
+          Our experience includes working at <strong><a href="https://peopleplus.ai/" target="_blank">People+ai</a></strong>, a non-profit backed by <strong>Nandan Nilekani</strong>, and contributing to large-scale projects like <strong>UPI</strong>. Now, we’re focused on using technology to simplify parenting.
+        </p>
+        <div class="button-group">
+          <a href="https://calendly.com/sreeram-sthaan/30min" class="btn">Share Your Experience - 30 Minute Call</a>
+          <a href="#team" class="btn">Our Team</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="container curiosity-section">
+    <h2>What Keeps Parents Up at Night? 🤔</h2>
+    <p class="subheading">Parenting isn’t easy. We’re curious about the biggest challenges you face. Let’s talk!</p>
+    
+    <div class="grid">
+      <div class="grid-item">
+        <i class="fas fa-calendar-alt"></i>
+        <h3>Juggling Schedules 📅</h3>
+        <p>School, playdates, activities—how do you keep up without losing your mind?</p>
+      </div>
+      <div class="grid-item">
+        <i class="fas fa-users"></i>
+        <h3>Managing Help 🏡</h3>
+        <p>Coordinating maids, cooks, tutors—smooth sailing or a daily headache?</p>
+      </div>
+      <div class="grid-item">
+        <i class="fas fa-clock"></i>
+        <h3>Finding Time ⏳</h3>
+        <p>What eats up most of your day? What do you wish you had more time for?</p>
+      </div>
+      <div class="grid-item">
+        <i class="fas fa-comments"></i>
+        <h3>Your Thoughts 💡</h3>
+        <p>Something else on your mind? We’d love to hear it!</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Team Section -->
+  <section id="team" class="container team-section">
+    <h2>Meet Our Team</h2>
+    <div class="team-members">
+      <div class="team-member">
+        <img src="./images/Tanuj.jpeg" alt="Tanuj Bhojwani" />
+        <h3>Tanuj Bhojwani</h3>
+        <p>ex-Head, People+AI</p>
+      </div>
+      <div class="team-member">
+        <img src="./images/Asif.jpeg" alt="Asif Hassan" />
+        <h3>Asif Hassan</h3>
+        <p>ex-Lead, Events & Community</p>
+      </div>
+      <div class="team-member">
+        <img src="./images/Abhinav.jpeg" alt="Abhinav Gupta" />
+        <h3>Abhinav Gupta</h3>
+        <p>Tech Leader | ex-axio (Capital Float) | ex-Apigee (Google)</p>
+      </div>
+      <div class="team-member">
+        <img src="./images/Sreeram.jpeg" alt="Sreeram Sridhar" />
+        <h3>Sreeram Sridhar</h3>
+        <p>ex-Fellow, People+AI</p>
+      </div>
+      <div class="team-member">
+        <img src="./images/Kavya.jpeg" alt="Kavya Doraswamy" />
+        <h3>Kavya Doraswamy</h3>
+        <p>ex-People+AI</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- FAQ Accordion Section -->
+  <section class="container faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <details>
+      <summary>Will we share your information with anyone?</summary>
+      <p>No, we will not share your information with anyone. Your responses are used solely to understand your challenges better and build the right features.</p>
+    </details>
+    <details>
+      <summary>Can the call be online or offline?</summary>
+      <p>The call can be conducted online or offline. However, we prefer offline conversations as it allows us to have a more in-depth and personal discussion.</p>
+    </details>
+    <details>
+      <summary>How long is the call?</summary>
+      <p>The call is scheduled for 30 minutes—just enough time to gather valuable insights without taking up too much of your day.</p>
+    </details>
+    <details>
+      <summary>What if I have more questions?</summary>
+      <p>If you have additional questions or concerns, feel free to reach out to us. We're here to help!</p>
+    </details>
+  </section>
+  
+  <!-- CTA Section with additional "Write to Us" button -->
+  <section class="cta">
+    <div class="container">
+      <h2>We'd Love to Hear Your Story</h2>
+      <p>Would you spare 30 minutes to share your experiences as a parent? Your insights will help us understand if there are meaningful ways technology could help.</p>
+      <div class="button-group">
+        <a href="https://calendly.com/sreeram-sthaan/30min" class="btn">Schedule a Conversation</a>
+        <a href="mailto:sreeram@sthaan.ai" class="btn">Write to Us</a>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
